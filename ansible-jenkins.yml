@@ -1,0 +1,19 @@
+- hosts: default
+
+  vars:
+          jenkins_version: "2.73.2"
+          jenkins_url: http://127.0.0.1
+          jenkins_port: 8080
+          jenkins_config_owner: ubuntu
+          jenkins_config_group: ubuntu
+          jenkins_install_via: "docker"
+          jenkins_jobs: [ 
+                "example-hellonode",
+                ]
+          jenkins_include_secrets: true
+
+  environment:
+          PYTHONPATH: "{{ lookup('env','PYTHONPATH') }}:/usr/local/lib/python2.7/dist-packages:/usr/local/lib/python2.7/site-packages"
+  roles:
+          - emmetog.jenkins
+
